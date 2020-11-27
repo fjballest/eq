@@ -1,0 +1,163 @@
+
+
+      * MANUAL DE REFERENCIA QUIMICA *
+
+      1 CONSIDERACIONES GENERALES.
+
+      Como ya hemos dicho, eq es un programa dise¤ado para explicar como
+transcurren las valoraciones  cido-base en el caso de  cidos y bases mo-
+nopr¢ticos.
+
+      Los cuatro tipos de valoraciones considerados son los siguientes:
+
+* Valoraci¢n de un  cido  fuerte con una base fuerte
+* Valoraci¢n de una base fuerte con un  cido fuerte
+* Valoraci¢n de un  cido d‚bil con una base fuerte
+* Valoraci¢n de una base d‚bil con un  cido fuerte
+
+      No hemos tenido en cuenta las valoraciones de un  cido d‚bil con una
+base d‚bil y viceversa porque el salto observable en la curva de valoraci¢n
+es muy peque¤o raz¢n por la cual este caso carece de utilidad did ctica
+apart ndose, por tanto, de los objetivos perseguidos con este programa.
+
+      En cada valoraci¢n hemos considerado cuatro momentos a lo largo del
+proceso:
+
+* Antes de comenzar la valoraci¢n
+* Antes de alcanzar el punto de equivlencia
+* En el punto de equivalencia
+* Una vez pasado el punto de equivalencia
+
+Las ecuaciones utilizadas para cada valoraci¢n se detallan en el siguiente
+punto.
+
+
+      2 FUNCIONES MATEMATICAS PARA EL CALCULO DEL pH
+
+      A continuaci¢n se especifican las funciones matem ticas utilizadas para
+calcular el pH en cada una de las cuatro etapas de cada uno de los cuatro ti-
+pos de valoraciones consideradas.
+
+      El significado de cada una de las variables que aparecen es el siguien-
+te:
+
+      Na: Normalidad del  cido
+      Nb: Normalidad de la base
+      Va: Volumen de  cido
+      Vb: Volumen de base
+      Vaecc: Volumen de  cido a¤adido tras alcanzarse el punto de equivalencia
+      Vbecc: Volumen de base a¤adido tras alcanzarse el punto de equivalencia
+
+      En estos dos £ltimos casos el sub¡ndice "ecc" hace referencia a que se
+trata de un volumen en exceso. En cuanto a las variables Va y Vb hay que tener
+en cuenta que permanecer n constantes o ir n variando a lo largo del proceso
+dependiendo de que el  cido (o la base) sean la sustancia a valorar o el agen-
+te valorante respectivamente.
+
+      Ka: Constante de disociaci¢n del  cido
+      Kb: Constante de disociaci¢n de la base
+
+      Vamos a referirnos ya  a cada caso concreto.
+
+      2.1 Valoraci¢n de un  cido fuerte con una base fuerte.
+
+Antes de comenzar la valoraci¢n:
+
+      pH= -log Na
+
+Antes de alcanzar el punto de equivalencia:
+
+                  Va*Na-Vb*Nb
+      pH= -log ---------------
+                    Va+Vb
+
+En el punto de equivalencia:
+
+      pH= 7
+
+Pasado el punto de equivalencia:
+
+                      Nb*Vbecc
+      pH= 14+log ---------------
+                    Va+Vb+Vbecc
+
+
+      2.2 Valoraci¢n de una base fuerte con un  cido fuerte.
+
+Antes de comenzar la valoraci¢n:
+
+      pH= 14+log Nb
+
+Antes de alcanzar el punto de equivalencia:
+
+                   Vb*Nb-Va*Na
+      pH= 14+log ---------------
+                     Vb+Va
+
+En el punto de equivalencia:
+
+      pH=7
+
+Pasado el punto de equivalencia:
+
+                   Vaecc*Na
+      pH= -log ----------------
+                  Va+Vb+Vaecc
+
+      2.3 Valoraci¢n de  cido d‚bil con base fuerte.
+
+Antes de comenzar la valoraci¢n:
+
+                      (1/2)
+      pH= -[log Ka*Na]
+
+Antes de alcanzar el punto de equivalencia:
+
+                     Va*Na-Vb*Nb
+      pH= -log Ka ---------------
+                        Vb*Nb
+
+En el punto de equivalencia:
+
+                   Ka(Va+Vb)    (1/2)
+      pH= -[ log ------------- ]       +7
+                     Va*Na
+
+Pasado el punto de equivalencia:
+
+                    Vbecc*Nb
+      pH= 14+log ---------------
+                   Va+Vb+Vbecc
+
+      2.4 Valoraci¢n de base fuerte con  cido fuerte.
+
+Antes de comenzar la valoraci¢n:
+
+                         (1/2)
+      pH= 14+ [log Kb*Nb]
+
+Antes de alcanzar el punto de equivalencia:
+
+                      Vb*Nb-Va*Na
+      pH= 14+log Kb ---------------
+                         Va*Na
+
+En el punto de equivalencia:
+
+
+                   Vb*Nb
+      pH= 7- [log ------------- ]
+                  Kb(Va+Vb)
+
+Pasado el punto de equivalencia:
+
+                 Vaecc*Na
+      pH= -log -------------
+                Va+Vb+Vbecc
+
+
+      En el programa, para evaluar los resultados con mayor rapidez, todas
+estas expresiones aparecen descompuestas en sumas y diferencias de logarit-
+mos.
+
+

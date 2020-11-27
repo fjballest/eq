@@ -1,0 +1,46 @@
+#
+# Acidos...
+#
+
+a HCl  fuerte 1.0 Acido Clorhidrico
+a CH3COOH debil   0.000018 Acido Acetico
+
+#
+# Bases ...
+#
+
+b NaOH fuerte 1.0        Hidroxido Sodico
+b NH3  debil  0.000018   Amoniaco
+
+#
+# Indicadores ...
+#   Colores validos son: Negro, Azul, Verde, Celeste, Rojo, Violeta
+#                        Marron, Gris, Naranja, Amarillo, Blanco.
+#              Cualquier otro color se toma como blanco.
+#              De cualquier modo, el numero de colores disponibles esta
+#              limitado por la tarjeta grafica.
+#
+
+i 0.1  1.5 Amarillo Azul     Violeta de Metilo
+i 1.2  2.8 Rojo     Amarillo Azul de Timol
+i 1.3  3.0 Rojo     Amarillo Tropeolina
+i 2.9  4.0 Rojo     Amarillo Amarillo de Metilo
+i 3.1  4.4 Rojo     Amarillo Anaranjado de Metilo
+i 3.0  4.6 Amarillo Azul     Azul de Bromofenol
+i 3.0  5.0 Azul     Rojo     Rojo Congo
+i 3.8  5.4 Amarillo Azul     Verde de Bromocresol
+i 4.2  6.3 Rojo     Amarillo Rojo de Metilo
+i 4.8  6.4 Amarillo Rojo     Rojo de Clorofenol
+i 6.0  7.6 Amarillo Azul     Azul de Bromotimol
+i 8.0  9.8 Blanco   Rojo     Fenolftaleina
+i 10.0 12.11 Amarillo Rojo   Amarillo de Alizarina
+i 11.6 14.0  Azul   Amarillo Carmin de Indigo
+i 5.6  7.6 Blanco   Amarillo Paranitrofenol
+i 6.8  8.4 Amarillo Rojo     Rojo de Fenol
+i 6.8  8.6 Blanco   Amarillo Metanitrofenol
+i 7.2  8.8 Amarillo Rojo     Rojo de Cresol
+i 7.4  9.0 Amarillo Violeta  Purpura de Cresol
+i 8.0  9.6 Amarillo Azul     Azul de Timol
+
+
+

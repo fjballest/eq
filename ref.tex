@@ -1,0 +1,223 @@
+
+\documentstyle[12pt]{articulo}
+\textwidth15cm
+\textheight20cm
+\oddsidemargin0cm
+\evensidemargin0cm
+
+\title{ {\bf eq v2.0} \\
+        Manual de Referencia Qu¡mica
+}
+\author{ Granada, 1992 }
+
+\newcommand{\eq}{{\sl eq}\/}
+
+
+\begin{document}
+\titlepage
+
+\typeout{*}
+\typeout{* eq usr manual...}
+\typeout{*}
+
+\maketitle\newpage
+
+\tableofcontents\newpage
+
+\section{ Consideraciones Generales }
+
+      Como ya hemos dicho, eq es un programa dise¤ado para explicar como
+transcurren las valoraciones  cido--base en el caso de  cidos y bases
+monopr¢ticos.
+
+      Los cuatro tipos de valoraciones considerados son los siguientes:
+\begin{itemize}
+\item Valoraci¢n de un  cido  fuerte con una base fuerte
+\item Valoraci¢n de una base fuerte con un  cido fuerte
+\item Valoraci¢n de un  cido d‚bil con una base fuerte
+\item Valoraci¢n de una base d‚bil con un  cido fuerte
+\end{itemize}
+
+      No hemos tenido en cuenta las valoraciones de un  cido d‚bil con una
+base d‚bil y viceversa. Esto se debe a que el salto observable en la curva de
+valoraci¢n es muy peque¤o, con lo que este caso {\em carece de utilidad
+did ctica } apart ndose, por tanto, de los objetivos perseguidos con \eq.
+
+      En cada valoraci¢n hemos considerado cuatro momentos a lo largo del
+proceso:
+\begin{itemize}
+\item Antes de comenzar la valoraci¢n
+\item Antes de alcanzar el punto de equivlencia
+\item En el punto de equivalencia
+\item Una vez pasado el punto de equivalencia
+\end{itemize}
+
+      Las ecuaciones utilizadas para cada valoraci¢n se detallan en el
+siguiente punto.
+
+
+\section{ Funciones matematicas para el c lculo del {\sl pH}}
+
+      Veremos aqu¡ la especificaci¢n de las funciones matem ticas utilizadas ‡
+para calcular el pH en cada una de las cuatro etapas de cada uno de los cuatro
+tipos de valoracion considerados. El significado de cada una de las variables
+que aparecen es el siguiente:
+\begin{quote}
+\begin{description}
+      \item[$N_{a}$] Normalidad del  cido
+      \item[$N_{b}$] Normalidad de la base
+      \item[$V_{a}$] Volumen de  cido
+      \item[$V_{b}$] Volumen de base
+      \item[$V_{aecc}$] Volumen de  cido a¤adido tras alcanzarse el punto de
+                   equivalencia
+      \item[$V_{becc}$] Volumen de base a¤adido tras alcanzarse el punto de
+                   equivalencia
+      \begin{quote}
+           En estos dos £ltimos casos el sub¡ndice ``ecc'' hace referencia a
+      que se trata de un volumen en exceso. En cuanto a las variables Va y Vb hay
+      que tener en cuenta que permanecer n constantes o ir n variando a lo largo
+      del proceso dependiendo de que el  cido (o la base) sean la sustancia a
+      valorar o el agente valorante respectivamente.
+      \end{quote}
+
+      \item[$K_{a}$] Constante de disociaci¢n del  cido
+      \item[$K_{b}$] Constante de disociaci¢n de la base
+\end{description}
+\end{quote}
+      Vamos a referirnos ya  a cada caso concreto.
+
+\subsection{ Valoraci¢n de un  cido fuerte con una base fuerte.}
+\begin{itemize}
+    \item Antes de comenzar la valoraci¢n:
+      \[pH = -\log{N_{a}}\]
+
+
+    \item Antes de alcanzar el punto de equivalencia:
+      \[ pH = -\log{ \frac{V_{a} \cdot N_{a} - V_{b} \cdot N_{b} }{ V_{a} + V_{b} }
+                    }\]
+
+    \item En el punto de equivalencia:
+      \[pH = 7 \]
+
+
+    \item Pasado el punto de equivalencia:
+      \[pH = 14 + \log{ \frac{N_{a} \cdot V_{becc}}{V_{a}+V_{b}+V_{becc}}
+                       }\]
+%                      Nb*Vbecc
+%      pH= 14+log ---------------
+%                    Va+Vb+Vbecc
+\end{itemize}
+
+\subsection{ Valoraci¢n de una base fuerte con un  cido fuerte.}
+\begin{itemize}
+   \item Antes de comenzar la valoraci¢n:
+      \[pH = 14 + \log{ N_{b}}\]
+
+   \item Antes de alcanzar el punto de equivalencia:
+      \[pH = 14 + \log{ \frac{V_{b} \cdot N_{b} - V_{a} \cdot N_{a}}
+                             {V_{b} + V_{a}}
+                       }\]
+%                   Vb*Nb-Va*Na
+%      pH= 14+log ---------------
+%                     Vb+Va
+
+   \item En el punto de equivalencia:
+      \[pH=7\]
+
+   \item Pasado el punto de equivalencia:
+      \[pH= -\log{ \frac{V_{aecc} \cdot N_{a}}
+                        {V_{a}+V_{b}+V_{aecc}}
+                  }\]
+%                   Vaecc*Na
+%      pH= -log ----------------
+%                  Va+Vb+Vaecc
+\end{itemize}
+
+\subsection{ Valoraci¢n de  cido d‚bil con base fuerte.}
+\begin{itemize}
+   \item Antes de comenzar la valoraci¢n:
+      \[ pH = - \log{ \sqrt{ K_{a} \cdot N_{a}} }\]
+
+%                      (1/2)
+%      pH= -log [Ka*Na]
+
+   \item Antes de alcanzar el punto de equivalencia:
+      \[ pH = -\log{ K_{a} \cdot \frac{V_{a}\cdot N_{a} - V_{b} \cdot N_{b}}
+                                      {V_{b} \cdot N_{b} }
+                    }\]
+
+%                     Va*Na-Vb*Nb
+%      pH= -log Ka ---------------
+%                        Vb*Nb
+
+   \item En el punto de equivalencia:
+      \[ pH = -\log{ \sqrt{ \frac{K_{a} \cdot(V_{a}+V_{b})}
+                                 {V_{a}\cdot N_{a}}
+                          }
+                    } +7 \]
+
+%                   Ka(Va+Vb)    (1/2)
+%     pH= -[ log ------------- ]       +7
+%                     Va*Na
+
+   \item Pasado el punto de equivalencia:
+       \[ pH = 14 + \log{ \frac{V_{becc}\cdot N_{b}}
+                               {V_{a}+V_{b}+V_{becc}}
+                         }\]
+
+%                    Vbecc*Nb
+%      pH= 14+log ---------------
+%                   Va+Vb+Vbecc
+\end{itemize}
+
+\subsection{Valoraci¢n de base fuerte con  cido fuerte.}
+\begin{itemize}
+   \item Antes de comenzar la valoraci¢n:
+      \[ pH = 14 + \log{ \sqrt{K_{b}\cdot N_{b}} }\]
+
+%                         (1/2)
+%      pH= 14+ [log Kb*Nb]
+
+   \item Antes de alcanzar el punto de equivalencia:
+      \[ pH = 14 + \log{ K_{b}\cdot \frac{V_{b}\cdot N_{b}-V_{a}\cdot N_{a}}
+                                         {V_{a}\cdot N_{a}}
+                        }\]
+
+%                      Vb*Nb-Va*Na
+%      pH= 14+log Kb ---------------
+%                         Va*Na
+
+   \item En el punto de equivalencia:
+       \[ pH = 7 - [ \log{ \frac{V_{b}\cdot N_{b}}
+                                {K_{b}\cdot (V_{a}+V_{b})}
+                         }
+                   ] \]
+
+
+%                   Vb*Nb
+%      pH= 7- [log ------------- ]
+%                  Kb(Va+Vb)
+
+   \item Pasado el punto de equivalencia:
+       \[ pH = - \log{ \frac{V_{aecc}\cdot N_{a}}
+                            {V_{a}+V_{b}+V_{becc}}
+                     }\]
+%                 Vaecc*Na
+%      pH= -log -------------
+%                Va+Vb+Vbecc
+\end{itemize}
+
+\section{ Nota sobre el c¢mputo efectuado.}
+    A pesar de exponer las f¢rmulas anteriores con una disposici¢n dada,
+en \eq\ no est n calculadas del mismo modo. En realidad se han transformado
+dichas expresiones en otras (matem ticamente equivalentes) para reducir en lo
+posible el error num‚rico. Varios criterios seguidos son:
+\begin{itemize}
+   \item Dividir por n£meros lo m s grandes posibles.
+   \item Eliminar el m ximo de divisiones y multiplicaciones mediante
+         transformaciones hacia operaciones con logaritmos.
+\end{itemize}
+
+
+
+\end{document}

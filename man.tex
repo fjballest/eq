@@ -1,0 +1,829 @@
+
+\documentstyle[12pt]{articulo}
+\textwidth15cm
+\textheight20cm
+\oddsidemargin0cm
+\evensidemargin0cm
+
+\title{ {\bf eq v2.0} \\
+        Manual de Usuario y Referencia
+}
+
+\author{ Esther Li¤ n Veganzones }
+
+
+\newcommand{\eq}{{\sl eq}\/}
+
+
+\begin{document}
+\titlepage
+
+\typeout{*}
+\typeout{* eq usr manual...}
+\typeout{*}
+
+\maketitle\newpage
+
+\tableofcontents\newpage
+
+\section{ Introducci¢n }
+
+   Con este documento se pretende dar las nociones b sicas necesarias
+para utilizar \eq. El programa \eq es, b sicamente, un simulador de
+valoraciones qu¡micas ( cido--base) para  cidos monopr¢ticos.
+
+   En principio introduciremos al lector en el uso elemental del ordenador.
+Esto lo haremos en la secci¢n~\ref{uso-dos},
+con ello pretendemos que se usted quede capacitado para {\em ejecutar} el
+programa. Si ya conoce los rudimentos del sistema operativo para el que
+posee \eq no es necesario que lea esta secci¢n.
+
+   Posteriormente entraremos en detalles de funcionamiento y, para los
+m s curiosos, hablaremos del dise¤o y de la programaci¢n de \eq.
+
+
+\section{ Antes de ejecutar \eq\ldots}
+
+   Hay ciertas necesidades para el correcto funcionamiento de este programa,
+as¡ mismo hay un cierto n£mero de ficheros que debe tener para disponer de
+la distribuci¢n completa de \eq. Por favor, lea {\em at‚ntamente} esta
+secci¢n.
+
+   Si habiendo  le¡do esta secci¢n tiene alguna duda puede recurrir
+al {\sl Manual de Usuario\/} de su sistema operativo ({\sc ms-dos},
+probablemente).
+
+\subsection{ Contenido del disco de {\bf \eq\/ v2.0}}
+
+   En el disco etiquetado {\bf \eq v2.0} debe tener los siguientes ficheros:
+
+\begin{description}
+   \item[eq.exe] El ejecutable del programa.
+   \item[eq.dat] Un fichero de datos suministrado como ejemplo necesario
+                 para la ejecuci¢n de \eq.
+   \item[leeme.ya] Ayuda de £ltima hora no inclu¡da en este manual. Es
+                 {\em muy conveniente} haberlo le¡do antes de ejecutar el
+                 programa.
+
+
+   \item[leer.com] Un programa que le permite leer el fichero anterior.
+   \item[man.tex]  El c¢digo fuente \LaTeX con el que se ecribi¢ este
+                   manual. ( Se utiliz¢ \TeX a tal fin).
+   \item[herc.bgi] Necesario para utilizar la targeta gr fica {\sl H‚rcules}.
+   \item[src.zip]  Fichero en formato comprimido que continene los {\em fuentes
+                   para {\sl TurboPascal~6.0\/}$+${\sl ToolBox\/}}.
+
+   \item[pkunzip.exe] Utilidad para extraer los fuentes del fichero anterior.
+\end{description}
+
+   {\em Si descubre que le falta alg£n fichero pase a la secci¢n siguiente
+para solicitar ayuda}
+
+   El programa est  a£n en su fase de {\em prototipado} por lo que queremos
+exponer con claridad que no aceptamos responsabilidad de ning£n tipo sobre
+posibles fallos del mismo.
+
+\subsection{ D¢nde encontrar m s ayuda }
+
+   Este programa es de {\em libre distribuci¢n}, eso quiere decir que no
+pertenece a una persona, sino que est  disponible para quien lo pueda
+necesitar, no se puede vender y se debiera entregar a toda aquella persona que
+lo pida. Ha sido programado en {\sl TurboPascal~6.0} por:
+
+\begin{quote}
+   Esther Li¤ n
+\end{quote}
+puede ponerse en contacto con nosotros mediante las siguientes direcciones de
+correo electr¢nico:
+\begin{quote} \tt
+      fballes@Spain.Sun.COM o nemo@judith.ls.fi.upm.es       \\
+      y                                                      \\
+      esther@judith.ls.fi.upm.es
+\end{quote}
+
+\subsection{ Requirimientos de \eq}
+
+
+   Para funcionar correctamente, \eq necesita como m¡nimo la
+configuraci¢n\footnote{ Un conjunto de elementos en su ordenador} siguiente:
+
+\begin{itemize}
+   \item Compatibilidad con {\sc ibm-pc}. Si bien no se precisa de forma
+absoluta, es posible que el programa no funcione del todo correctamente con
+un ordenador que sea demasiado diferente del {\sc ibm-pc}.
+
+   \item Tarjeta gr fica compatible con alguna de las siguientes:
+   \begin{itemize}
+      \item {\sc vga}
+      \item {\sc ega}
+      \item {\sc cga}
+      \item {\sl H‚rcules\/}: Para utilizar esta tarjeta necesita un fichero
+            llamado {\sl herc.bgi\/} que puede conseguir del disco de
+            distribuci¢n de \eq o de cualquier {\sl TurboPascal~6.0\/} o
+            posterior (Aunque es posible que funcionen los de versiones
+            previas, no es del todo seguro).
+   \end{itemize}
+      A excepci¢n de la tarjeta {\sl H‚rcules\/}, todas las otras mencionadas
+   tienen el {\sl driver}\footnote{Programa que permite manejarla}\/ inclu¡do
+   en el propio programa.
+
+   \item Tener el fichero de datos para \eq ({\sl eq.dat\/}) en el mismo
+   directorio en que se llame a \eq. Esto no es tan restrictivo como parece,
+   puesto que a \eq se le puede decir de d¢nde tiene que coger los datos.
+
+\end{itemize}
+
+   Si dispone de los elementos anteriormente mencionados puede ejecutar \eq.
+No obstante le recomendamos que no fuerze a {\em emulaci¢n} su tarjeta
+gr fica (si puede evitarlo). Los {\sl drivers\/} para las tarjetas se podr¡an
+confundir.
+
+
+
+
+\subsection{ Rudimentos de {\sc ms-dos}}
+\label{uso-dos}
+
+    Los pasos necesarios para ejecutar eq (tras haber comprobado que se
+dispone de lo necesario) son los siguientes:
+\begin{enumerate}
+   \item Anule la emulaci¢n de su tarjeta gr fica. Si no est  seguro de si
+         est  emulando: Apage y vuelva a encender el ordenador.
+
+   \item Introduzca en una unidad de disco el disco etiquetado
+         ``{\bf eq v2.0}''.
+
+   \item En el prompt del sistema operativo (por ej.: ``{\sc a}:'') escriba
+         ``{\sc eq}'' y oprima {\sc retorno}.
+
+   \item El programa es pr cticamente autoexplicativo.
+\end{enumerate}
+
+   Para instalar \eq en su disco duro debe en cambio copiar ¡ntegramente el
+contenido del disco en que ha recibido eq al subdirectorio que desee. Por
+supuesto, al llamar al programa debe indicarle {\em d¢nde} est  su fichero
+de datos. Por ejemplo,(tras insertar el disco de \eq en la unidad {\sc a}:):
+
+\begin{verbatim}
+   C:\> CD UTILES
+   C:\UTILES\> MKDIR EQ
+   C:\UTILES\> CD EQ
+   C:\UTILES\EQ> XCOPY A:\ .
+   C:\UTILES\EQ> CD \
+
+   C:\> EQ \UTILES\EQ\EQ.DAT
+\end{verbatim}
+
+   Para simplificar las cosas, en lugar de tener que darle siempre el
+nombre del fichero de datos es posible crear un fichero {\sl .bat\/} que
+lo haga por nosotros. Su contenido ser¡a:
+\begin{verbatim}
+   C:\UTILES\EQ\EQ EQ.DAT %1 %2 %3 %4 %5 %6
+\end{verbatim}
+
+
+   Si quiere saber m s sobre {\em c¢mo} manejar \eq lea las siguientes
+secciones.
+
+\section{ Una valoraci¢n }
+
+   En esta y en las siguientes secciones vamos a informar de lo que se
+puede hacer con \eq. Hay que indicar que estas secciones est n orientadas
+al profesor como informaci¢n sobre lo que puede esperar de \eq. En cuanto
+al alumno que las est‚ leyendo, si no se entiende el {\em sentido qu¡mico} de las
+frases en el texto es recomendable recurrir al tutor, profesor o en su
+defecto a un {\em manual de qu¡mica}. No obstante {\em junto con este documento
+ha debido recibir un {\bf Manual de Referencia Quimica}} en el que se le
+detallan en cierta medida los aspectos {\sl qu¡micos\/} de \eq.
+
+   Una valoraci¢n es un m‚todo o t‚cnica con el que pretendemos obtener
+informaci¢n sobre un  cido o base en disoluci¢n. Se valora un  cido
+con una base o una base con un  cido.
+
+   En una valoraci¢n disponemos la sustancia que queremos valorar en un
+recipiente, a¤adimos un indicador y, poco a poco, volumen de la sustancia
+con la que valoramos.
+
+   Hay informaci¢n suficiente sobre valoraciones en cualquier texto de
+qu¡mica general as¡ como en el {\sl Manual de Referencia Qu¡mica}.
+
+   A efectos de este programa indicaremos s¢lo que est  restringido a
+valoraciones en las que intervienen  cidos monopr¢ticos, habiendo sido pues
+exclu¡dos por completo los dipr¢ticos,etc.
+
+\subsection{ Acidos, bases e indicadores\ldots}
+
+   La informaci¢n sobre  cidos, bases e indicadores se puede cambiar para
+que el programa simule la valoraci¢n que nos interese. Esta informaci¢n se
+encuentra en el fichero de datos (el suministrado se llama {\sl eq.dat\/}).
+Dicho fichero de datos tiene una estructura muy simple que detallamos a
+continuaci¢n.
+
+   En el fichero pueden existir l¡neas de datos, l¡neas en blanco y l¡neas
+de comentario. las l¡neas de comentario comienzan por el s¡mbolo ``{\tt \#}''.
+Las l¡neas de datos var¡an para  cidos, bases e indicadores en su composici¢n,
+los elementos que forman cada una de estas l¡neas deben ir separadas por
+espacios en blanco o tabuladores:
+
+\begin{itemize}
+    \item Para  cidos:
+      \begin{itemize}
+      \item Una ``{\tt a}'' al principio de la l¡nea
+      \item Indicaci¢n sobre la fuerza (``{\tt fuerte}'' ¢ ``{\tt debil}'').
+      \item Constante (n£mero real).
+      \item Nombre, que puede tener una o m s palabras (hasta el fin de la
+            l¡nea).
+      \end{itemize}
+    \item La bases se indican igual que los  cidos,la £nica diferencia
+          consiste en que en lugar de una ``{\tt a}'' al principio de l¡nea,
+          debe aparecer una ``{\tt b}''.
+    \item Para indicadores:
+      \begin{itemize}
+      \item  Una ``{\tt i}'' al principio de la l¡nea
+      \item  Los dos valores (de menor a mayor pH) para el intervalo de
+             viraje del indicador.
+      \item  Los nombres de los colores de la forma  cida y b sica resp.
+             Se consideran colores v lidos: Negro, Azul, Verde, Celeste,
+             Rojo, Violeta, Marron, Gris, Naranja, Amarillo, Blanco. Todo
+             color distinto de estos se toma como blanco.
+
+      \item El nombre del indicador.
+      \end{itemize}
+
+\end{itemize}
+
+\section{ M‚todos para seguir la pista a una valoraci¢n}
+\label{met-qui}
+    En esta secci¢n vamos a dar un repaso r pido a los m‚todos que se
+implementan\footnote{aquellos que contemplamos en el programa} en \eq.
+Si desea saber como elegirlos encontrar  informaci¢n en la 
+secci¢n~\ref{menus}.
+
+\subsection{Tabla de valoraci¢n}
+
+    En la simulaci¢n se tiene acceso a una tabla en la que se puede ver
+el valor de pH y de su derivada para cada porcentaje de valoraci¢n.
+As¡ mismo se puede elegir la precisi¢n con la que se elabora esta tabla;
+con precisi¢n m xima se ven todos los valores calculados realmente, con
+precisi¢n normal se ven s¢lo aquellos se calcular¡an al hacer la simulaci¢n
+de forma manual como ejercicio.
+
+   As¡ mismo existe la posibilidad de conservar dicha tabla en un fichero
+(a nuestra elecci¢n) y/o en impresora.
+
+\subsection{Curva de valoraci¢n}
+
+   Se elija la opci¢n que se elija en cuanto a precisi¢n tendremos ocasi¢n de
+ver con la m xima precisi¢n la gr fica de la curva de valoraci¢n,
+que representa valores de pH frente a volumen a¤adido (Lo que ha caido
+de la bureta). Se dispone de indicaci¢n del punto de equilibrio y de
+una facilidad de navegaci¢n.
+
+   La navegaci¢n consiste en la posibilidad de {\em viajar} por la curva
+viendo los valores de los puntos por los que pasamos.
+
+\subsection{Primera derivada de la curva de valoraci¢n}
+
+   As¡ mismo se puede ver si se desea la curva correspondiente a la
+primera derivada de la curva anterior. Para esta curva tambi‚n se dispone de
+navegaci¢n.
+
+   Por supuesto se indica el m ximo/m¡nimo en dicha curva.
+
+\subsection{M‚todo de las tres tangentes}
+
+   En caso de seleccionarse dicho m‚todo para simulaci¢n se puede comprobar
+el desarrollo del mismo, con una representaci¢n gr fica (paso a paso) y
+una breve explicaci¢n de lo que se ejecuta en cada paso:
+\begin{enumerate}
+  \item Dibujar tangentes a la curva (en realidad interpolaciones lineales).
+  \item Marcar los puntos de corte y trazar por ellos paralelas al eje {\sc o-x}.
+  \item Tomar en dichas paralelas distancias iguales a ambos lados de los
+        puntos de corte. (En el programa se toman como $1/2$ de la distancia
+        al punto de equilibrio).
+  \item Unir en diagonal los cuatro puntos extremos resultantes del paso
+        anterior.
+\end{enumerate}
+
+
+\section{ El programa: Ventanas, menus,\ldots}
+
+   Vamos ahora a mirar al programa y a aprender a obtener la informaci¢n que
+hemos mencionado en las secciones anteriores. Para ello iremos viendo los
+elementos que {\em aparecen} al ejecutarlo y la utilidad de los mismos.
+
+   De entre los elementos de que consta ({\em visualmente}) \eq, tenemos
+dos de ellos muy utilizados,
+\begin{itemize}
+	\item ventanas y
+	\item men£s.
+\end{itemize}
+
+   Una {\em ventana} es una regi¢n (en \eq siempre cuadrada) de la pantalla
+utilizada para mostrar ---o preguntar--- alg£n tipo de informaci¢n. Dichas
+ventanas reunen elementos de informaci¢n relacionados entre si, de tal modo
+que queden claramente expuestos al usuario; si bien es cierto algunas 
+ventanas s¢lo aparecen cuando se pregunta algo al usuario y constan de algunos
+mensajes para ayudar al usuario a contestar la(s) pregunta(s) y un  rea en la
+que es posible escribir para contestarla(s).
+
+   Las ventanas son claramente distinguibles, suelen estar rodeadas de un
+marco de forma rectangular (usualmente).
+
+   Por otro lado, los {\em men£s} se asemejan a ventanas, aunque con una
+utilidad bien distinta. Estos elementos se utilizan para elegir entre una
+o m s opciones aquellas que interesan en un momento dado. En las secciones
+siguientes se indica la utilidad de cada uno de los men£s de \eq.
+
+   En \eq se utilizan dos tipos de men£: el {\em men£ de l¡nea} y el 
+{\em men£ pull-down}. El men£ de linea aparece como una l¡nea con una serie de
+textos (opciones), uno de los cuales est  resaltado. Con el uso de las
+teclas del cursor se puede elegir una de ellas. As¡ mismo es habitual el que
+cada opci¢n de dicho men£ encierre un men£ de tipo {\sl pull-down\/}. Para entrar
+en el {\em submen£} se puede utilizar el {\sc retorno} o las teclas del cursor,
+({\sc abajo}). Una vez en dicho submen£ se puede volver al men£ anterior con
+la tecla {\sc escape} o bien con la tecla ({\sc arriba}) del cursor
+correspondiente.
+
+   Los men£s {\em pull-down} son, pues, submen£s de los que se puede entrar y
+salir desde otro men£. Suelen tener las distintas opciones dispuestas
+verticalmente.
+
+   En general, para todos los men£s, hay una l¡nea en la pantalla\footnote{en
+\eq la l¡nea superior} que muestra ayuda sobre la opci¢n resaltada (aquella
+que se elegir  si se oprime {\sc retorno}).
+
+   Ahora que estamos m s familiarizados con la {\sl zoolog¡a\/} que compone
+la pantalla de \eq, vamos a pasar a ver que se puede hacer con ella.
+
+\subsection{La pantalla principal del \eq}
+
+   Cuando se ha ejecutado \eq en la l¡nea de comandos aparece una pantalla que
+nosotros denominaremos la ``{\em pantalla principal}'' de \eq. En esta 
+pantalla se pueden hacer las elecciones necesarias para proceder posteriormente
+a una simulaci¢n.
+
+   Si ejecuta \eq y se fija en la pantalla principal podr  observar distintas
+ reas en la misma:
+\begin{description}
+	\item[Ventana de Valoraci¢n] Esta le informa de los elementos elegidos
+	para efectuar la simulaci¢n. Se encuentra situada en la parte inferior
+	de la pantalla. En la parte izquierda de la misma se
+	puede observar el nombre del  cido y de la base, as¡ como cual de ellos
+	es el que queremos valorar.
+	   En la parte derecha observamos las opciones elegidas en relaci¢n a
+	la simulaci¢n. Las iremos viendo cuando expliquemos el uso de los men£s.
+
+	\item[Ventana de Identificaci¢n] Queda situada justo sobre la ``ventana
+	de valoraci¢n''. Su utilidad es £nicamente identificar el programa que
+	est  ejecutando. Se puede ver la {\em versi¢n}\footnote{esto es,
+	cual de los programas desarrollados para \eq est  ejecutando} del mismo
+	en dicha ventana.
+
+	\item[L¡nea de ayuda] La puede ver en la primera l¡nea de la
+	pantalla\footnote{la que aparece arriba}. Su utilidad es tan s¢lo la de
+	darle un poco de ayuda. Suele contener ayuda sobre la opci¢n del men£
+	que est  seleccionada.
+
+	\item[Men£ de l¡nea] (o {\em men£ principal}) Se puede mover libremente
+	por el con las teclas del cursor (las flechas en el teclado). Para
+	elegir una opci¢n puede oprimir {\sc retorno} y para salir {\sc escape}.
+	Seguidamente encontrar  informaci¢n sobre las distintas opciones.
+\end{description}
+
+\subsubsection{Los men£s de \eq}
+\label{menus}
+
+	En la discusi¢n que sigue vamos a condiderar que todos los men£s son
+uno £nico, puesto que usted ya debe saber como entrar y salir de ellos.
+
+	Al comenzar puede ver varias opciones:
+\begin{itemize} \sc
+	\item acidos
+	\item bases
+	\item tipo~de~valoracion
+	\item opciones
+	\item valorar
+	\item salir
+\end{itemize}
+
+	Si entra en {\sc acidos} o en {\sc bases} podr  elegir un  cido 
+(o una base si entra en {\sc bases}) distinto del que puede ver en la ventana
+de valoraci¢n. La l¡nea de ayuda le indicara m s sobre el  cido o base que
+est‚ seleccionando\footnote{sobre el que est‚ situado}.
+
+	Cambiar el tipo de valoraci¢n (`` cido~con~base'' o ``base~con~ cido'')
+es algo que podr  hacer eligiendo la opci¢n de {\sc tipo~de~valoracion}.
+
+	Es importante recordar que {\em no se puede valorar {\sl X\/} con
+{\sl Y\/} si {\sl Y\/} es d‚bil}.
+
+	La opci¢n de {\sc salir} le permite abandonar el programa y la opci¢n de
+{\sc valorar} le da paso a la pantalla de simulaci¢n. La siguiente secci¢n
+le habla de esta pantalla. Antes de acceder a la pantalla de simulaci¢n se
+le preguntar n (haciendo uso --¨como no?, de otra ventana) los datos que
+a£n faltan para efectuar la valoraci¢n:
+    \begin{itemize}
+    \item Normalidad del  cido
+    \item Normalidad de la base
+    \item Volumen que deseamos valorar. (El volumen de la bureta se escoge
+          de forma autom tica).
+    \end{itemize}
+    Para cada una de estas preguntas se le indicar  el rango de valores que
+son admisibles. Es ahora cuando est  en la £ltima ocasi¢n de volver atr s y
+no valorar: Pulsando {\sc escape} volver  de nuevo al men£ en la pantalla
+principal.
+
+	Pasemos ahora a lo que aparece dentro de {\sc opciones}.  Si desea
+obtener una copia impresa o en fichero de la tabla de valoraci¢n es aqu¡ donde
+debe pedirlo. Las opciones {\sc salida~a~impresora} y {\sc salida~a~fichero} est n
+orientadas a tal fin. Estas dos opciones son de tipo ``{\sc v/f}'', es decir,
+al elegirlas una vez se {\em activan} y al elegirse una segunda vez se {\em
+desactivan} (as¡ sucesivamente). 
+
+	En el momento en que eliga {\sc salida~a~fichero} le aparecer  una
+ventana que le permitir  introducir el nombre que desee para dicho fichero.
+Puede incluir nombres completos con camino incluido como:
+\begin{verbatim}
+	C:\TRABAJOS\QUIMICA\SIMULACIONES\MI-FICH.TXT
+\end{verbatim} 
+
+	Las opciones de {\sc metodos~de~valoracion} y de {\sc precision} le
+permiten escoger los elementos que aparecer n en la pantalla de simulaci¢n. 
+Los m‚todos se refieren a m‚todos pr cticos utilizados para observar una
+valoraci¢n y la precisi¢n se refiere al volumen de datos que aparece en la
+tabla de valoraci¢n.
+
+	Entre los m‚todos disponibles est n la {\sc curva de valoracion},
+la {\sc primera derivada}, {\sc tangentes} e {\sc indicador}. Todas estas
+opciones son tambi‚n de tipo ``{\sc v/f}''. Los m‚todos a que se refieren
+est n brevemente comentados en la secci¢n~\ref{met-qui}.
+
+	Quiz  le asombre si ve que al elegir el m‚todo de las {\sc tangentes}
+se le {\em auto-elige} el de la {\sc curva~de~valoracion} si no lo ten¡a
+seleccionado: Piense que sin curva no hay tangente y que no merece la pena
+ver la tangente sin ver la curva.
+
+	La precisi¢n {\sc normal} corresponde a una tabla de valoraci¢n
+calculada {\em a mano}. Esto es, no aparecen en ella todos los valores
+calculados por el programa. En concreto s¢lo aparecen los para
+$1\%$, $10\%$, $20\%$, \ldots, $90\%$, $91\%$,\ldots,$100\%$,$101\%$,\ldots
+de valoraci¢n.
+	Por el contrario, la precisi¢n {\sc maxima} hace que en la tabla
+aparezcan {\em todos} los valores que relamente calculamos.
+
+	Resulta m s o menos obvio que los valores que aparecen en la tabla
+una vez en la pantalla de simulaci¢n son tambi‚n copiados a fichero y/o a
+impresora si as¡ se eligi¢.
+
+	Pasemos ahora a la pantalla de simulaci¢n ya que sabemos llegar hasta
+ella, este es realmente el coraz¢n de \eq.
+
+\subsection{La pantalla de simulaci¢n}
+
+    Una vez escogida la opci¢n de {\sc valorar} podr  comprobar como la
+pantalla cambia por completo: Hemos entrado en el modo de simulaci¢n. Una
+vez en ‚l, podemos ver como los elementos con los que cont bamos en la
+pantalla principal han sido reemplazados por otros.
+
+    La parte superior de esta pantalla muestra un {\bf encabezamiento} que
+nos puede servir para recordar los elementos elegidos para la simulaci¢n.
+
+    En el otro extremo, la parte inferior de la pantalla, disponemos de dos
+{\em l¡neas de ayuda}: la l¡nea de situaci¢n y la l¡nea de informaci¢n. Una
+nos dice que teclas est n disponibles para uso y otra nos informa sobre lo
+que est  haciendo \eq en estos momentos.
+
+    Los elementos restantes son la {\bf gr fica de valoraci¢n}, sobre la
+que se dibujan los m‚todos (a la derecha); y la {\bf tabla de valoraci¢n}
+a la izquierda.
+
+    En cuanquier momento de la simulaci¢n se dispone de las teclas [+], [-],
+y [{\sc escape}] para acelerar, decelerar y abortar la simulaci¢n
+respectivamente. Tambien disponemos de [{\sc retorno}] que acelera al m ximo
+la simulaci¢n.
+
+    Una vez completada la simulaci¢n se activa el {\sl navegador\/}, y
+podemos viajar por las curvas dibujadas. Aparecen cursores (figuras sobre
+la(s) curva(s)) que nos indican la posici¢n y la l¡nea de estado nos informa
+de los datos £tiles disponibles sobre el punto en el que estemos.
+
+
+
+\subsection{C¢mo modificar el comportamiento del programa}
+
+    Con esto hemos completado el recorrido por el programa. Con esta ayuda y
+la que el propio programa da al ejecutarse debiera serle simple su manejo.Si
+tan s¢lo quiere utilizar eq sin complicarse demasiado no es preciso que siga.
+
+    En esta secci¢n vamos a ver las opciones con las que podemos llamar a
+\eq en la l¡nea de comandos. Llamamos opciones a aquello que podemos
+escribir tras el nombre del programa a la hora de ejecutarlo.
+
+    Existen dos formas de ejecutar \eq:
+
+    \begin{itemize}
+    \item Para pedir ayuda
+    \begin{quote}
+       \tt eq -h
+    \end{quote}
+    \item Para efectuar una (o m s) simulaciones
+    \begin{quote}
+        \tt eq \sl opciones nombre\_del\_fichero\_de\_datos\ldots
+    \end{quote}
+          donde todo (a excepci¢n de {\tt eq}) se puede omitir.
+    \end{itemize}
+
+    Si no se indica el nombre para el fichero de datos \eq tomar 
+    ``{\tt eq.dat}'' como el nombre del mismo.
+
+    Las opciones sirven para modificar el comportamiento de \eq y se
+indican escribiendo un ``-'' o un ``/'' seguido de una letra por cada opci¢n.
+Estas letras pueden ser:
+    \begin{description}
+    \item[h] Suministra ayuda sobre las opciones: No simula nada.
+    \item[c] Hace que se elija la \underline{c}urva de valoraci¢n sin necesidad de
+             elegirla con los men£s
+    \item[p] En el mismo estilo, hace que se elija la \underline{p}rimera
+             derivada para dibujarse.
+    \item[t] Selecciona autom ticamente el m‚todo de las \underline{t}angentes
+    \item[i] Elige as¡ mismo el dibujo del intervalo de viraje del
+             \underline{i}ndicador.
+    \item[n] Situa la precisi¢n a \underline{n}ormal.
+    \item[a] Elige el modo de \underline{a}lta precisi¢n.
+    \item[w] Indica que se desea copia a impresora.
+    \end{description}
+
+\section{ Errores comunes}
+
+    Vamos a detallar los errores que se han encontrado en las pruebas
+efectuadas a \eq, as¡ como las causas. Esta lista es del todo incompleta,
+y se ir  completando a medida que nos llegue informaci¢n de nuevos errores.
+    En el momento en que el n£mero o la importancia de ‚stos sea considerable
+se realizar  una nueva versi¢n del programa con la posible correcci¢n de
+todos o parte ellos.
+
+\begin{enumerate}
+   \item {\bf No hay memoria para cargar driver}. Suele pasar cuando
+   disponemos de poca memoria y efectuamos demasiadas simulaciones sin
+   salir del programa: La memoria se fragmenta y no queda espacio para
+   cargar el driver para la tarjeta gr fica, el programa aborta.
+   \begin{description}
+   \item[importancia] escasa
+   \item[estado] registrado
+   \item[soluci¢n alternativa] volver a ejecutar el programa, no suele
+   haber problema entonces al haber quedado libre toda la memoria.
+   \end{description}
+
+   \item {\bf No puedo encontrar el fichero de datos}, esto quiere decir
+   que o bien no existe en el directorio actual, o bien el nombre es
+   incorrecto.
+   \begin{description}
+   \item[importancia] nula
+   \item[estado] abandonado
+   \item[soluci¢n alternativa] llamar al programa con el nombre del
+   fichero de datos.
+   \end{description}
+
+   \item {\bf No se ven los bien los colores}, esto puede ocurrir a pesar
+   de tener una tarjeta gr fica a color. Es el caso cuando la tarjeta
+   no tiene un n£mero suficiente de colores.
+   \begin{description}
+   \item[importancia] escasa
+   \item[estado]  registrado para soluci¢n.
+   \item[soluci¢n alternativa] Tratar de emular otra tarjeta.
+   \end{description}
+\end{enumerate}
+
+\section{ Referencia r pida para programadores }
+
+   Esta secci¢n est  orientada {\em exclusivamente a personas con dominio
+del lenguaje {\sl Pascal} y de la metodolog¡a de programaci¢n en base
+a abstracciones}. Si no dispone de un conocimiento fundamentado en estos
+conceptos ser¡a mejor que lo adquiriese antes de tratar de entender del todo
+esta secci¢n. No obstante es posible que consiga una visi¢n general del
+c¢digo fuente si le echa un vistazo a esta secci¢n sin dar demasiada
+importancia a lo que no entienda.
+
+  No pretendemos aqu¡ dar una explicaci¢n de c¢mo funciona internamente el
+programa,{\em eso ya lo hace el c¢digo comentado}. La idea es complementar
+los comentarios existentes en el c¢digo de forma que se obtenga una visi¢n de
+conjunto al leer esta secci¢n para despues pasar a detalles concretos en
+el mismo c¢digo fuente.
+
+
+\subsection{Divisi¢n del c¢digo}
+
+   El fuente de este programa est  repartido a lo largo de una serie de
+m¢dulos (cada uno de ellos en un s¢lo fichero). No se ha forzado demasiado
+el dise¤o del programa debido a que su extensi¢n no es excesiva (unas 4000
+l¡neas --comentarios inclu¡dos). Todos los fuentes est n incluidos en el
+fichero {\tt src.zip}
+
+  Cada m¢dulo se encarga de un {\em objeto} con el que tenemos que tratar,
+esto es, implementa una abstracci¢n.
+
+  En concreto, la lista de los m¢dulos y el objeto tratado se encuentra a
+continuaci¢n:
+
+\begin{description}
+\item[eq] Es el programa principal en s¡.
+\item[opcs] Constituye las opciones elegibles por el usuario,
+            se interrelaciona con el sistema operativo por tanto.
+\item[simular] Suministra una pantalla de simulaci¢n.
+\item[itrval]  Es un {\em iterador} de valoraciones. Esto es, un
+               objeto que sabe que pasos hay que dar al efectuar una
+               valoraci¢n.
+\item[grfval] Esta es la gr fica de valoraci¢n.
+\item[tblval] Aqu¡ tenemos la tabla de una valoraci¢n.
+\item[val]    Una valoraci¢n {\sl per s‚}, es el £nico m¢dulo que sabe c¢mo
+              hacer los c lculos que se realizan usualmente en una
+              valoraci¢n.
+\item[react]  Elementos que utilizamos,  cidos, bases e indicadores.
+\item[phfun]  Funciones matem ticas para calcular pH.
+\item[nav]    El navegador, una entidad que sabe desplazarse en una serie
+              de puntos.
+\item[grio]   Es el m¢dulo que abstrae la pantalla gr fica, complementa al
+              m¢dulo de la {\sl ToolBox}\/ y da algunas funciones £tiles.
+\end{description}
+
+  Los dem s m¢dulos pertenecen a la {\sl ToolBox\/} de {\sl TurboPascal\/},
+entre ellos est n los que permiten manejar ventanas, men£s, etc.
+
+  Para extraer los m¢dulos de {\tt src.zip} utilize {\tt pkunzip}, si no
+sabe como hacerlo, llame a {\tt pkunzip} sin darle ninguna opci¢n y el
+le dar  todo tipo de ayuda.
+
+  El c¢digo fuente est  en s¡ suficientemente comentado para alguien con
+dominio de {\sl Pascal\/}, no obstante comentaremos aqu¡ algunas
+peculiaridades del mismo.
+
+\subsection{eq}
+
+   Este m¢dulo s¢lo se encarga de efectuar una inicializaci¢n del programa,
+men£s y ventanas y dibujar todas ellas (la pantalla principal est  manejada
+directamente por  {\tt eq}). As¡ mismo deja al usuario elegir una opci¢n
+tras otra actualizaciando la ventana de valoraci¢n.
+
+   Una vez introducida la informaci¢n adicional sobre la valoraci¢n
+(normalidades y vol£men) llama a {\tt valorar()} y aqu¡ empieza a tener
+utilidad la mayor¡a del resto del c¢digo.
+
+\subsection{opcs}
+   Contiene tipos de datos para las opciones de entrada (las de la l¡nea de
+comandos) y de salida del programa. As¡ mismo suministra una funci¢n que
+llama {\tt eq} al principio de su ejecuci¢n y que se encarga de definir
+las opciones en funci¢n de los argumentos del programa: Esta funci¢n es
+{\tt Definir\_opcs()}.
+
+   Con esto acaba la utilidad de este m¢dulo que s¢lo se utiliza pues en la
+fase de inicializaci¢n.
+
+\subsection{simular}
+
+   Aqu¡ nos encargamos de la pantalla de simulaci¢n. Hay un £nico procedimiento
+({\tt valorar()}) que es el que se encarga de presentar una pantalla de
+simulaci¢n y de {\em activar} a los m¢dulos que verdaderamente saben hacerla,
+presentando la informaci¢n que estos suministran.
+
+
+   El sistema de gr ficos se inicializa aqu¡ con la ayuda de {\tt grio}.
+Los m¢dulos principales que se utilizan aqu¡ son {\tt itrval},{\tt grfval} y
+{\tt tblval}. Los otros est n para apoyar a {\tt simular} principalmente.
+
+\subsection{itrval}
+
+   Como ya dijimos es el que se encarga en dar pasos en la simulaci¢n. Dispone
+de dos procedimientos principales, adem s de otros que suministran informaci¢n.
+
+   Los procedimientos principales son {\tt Iniciar\_itr()} y
+{tt Continuar\_itr()} que, respectivamente, dan comienzo a una iteraci¢n y
+contin£an con la misma.
+
+   El prodecimiento de simulaci¢n de una valoraci¢n es una iteraci¢n casi
+por completo: {\em continuamente se repite la misma operaci¢n}, consistente
+en a¤adir m s volumen de la bureta al recipiente en que valoramos. As¡
+pues, b sicamente el comportamiento de este iterador es £nicamente incrementar
+el volumen a¤adido y actualizar consecuentemente los valores de los
+par metros para la valoraci¢n (pH, derivada, etc.).
+
+   Es de destacar que al iniciar el iterador se le indica el n£mero de pasos
+que ha de dar. El m¢dulo {\tt simular} hace que este valor sea tal que
+se de un paso por cada {\sl pixel\/} de gr fica que se dibuja, as¡ pues
+la representaci¢n gr fica es {\em exacta}. Por supuesto con un error de
+$\pm 1$pixel. Con esto reducimos el error de la gr fica al m ximo, objetivo
+principal del programa.
+
+   El resto de los prodecimientos se utilizan para preguntar el estado
+de la iteraci¢n en cada uno de los pasos. A excepci¢n de una de ellas que
+se utiliza al final: {\tt Indicador\_optimo\_i()} que sabe identificar un
+indicador como ¢ptimo para una valoraci¢n de entre los presentes en un
+vector.
+
+   Hay funciones para preguntar pH, valor de su derivada, etc. Tanto para
+precisi¢n manual como para precisi¢n total. Hay que tener en cuenta que
+{\em siempre} se hacen los c lculos a precisi¢n m xima; aunque algunas
+veces interesan los valores manuales.
+
+   Estos valores manuales se obtinen mediante una interpolaci¢n de tipo
+lineal tomando como dato los puntos m s pr¢ximos. Se dispone tambi‚n de
+una funci¢n {\tt Hay\_valor\_manual()} que nos informa de los pasos en que
+se han producido alguno de estos valores manules.
+
+\subsection{grfval}
+
+   M s que una gr fica de valoraci¢n, suministra un iterador para gr ficas
+de valoraci¢n. Como era de suponer, tiene funciones para iniciar la gr fica
+de la curva y de la derivada, as¡ como de otras para a¤adir puntos a dichas
+curvas. No hace falta decir que ambas curvas se dibujan en el mismo sistema
+de coordenadas.
+
+   Para permitir ``dibujar'' sobre las curvas, suministran funciones que
+reciben puntos en funci¢n de sus valores de volumen y pH y tranzan
+distintos tipos de l¡neas. Tambi‚n hay funciones para resaltar puntos:
+Los de equilibrio en la curva y en la derivada.
+
+   Al inicializarse recibe el ancho de la pantalla de que dispone y se ajusta
+a ella, indicando cuanto ha utilizado. El m¢dulo {\tt simular}, tras
+inicializar la tabla de valoraci¢n le informa de la pantalla que le queda
+disponible para la gr fica, no habiendo problemas al cambiar de tarjeta
+gr fica.
+
+\subsection{tblval}
+
+   En cuanto a la tabla de valoraci¢n, es aqu¡ donde se almacenan los
+valores mostrados posteriormente en la navegaci¢n: Dentro de la estructura
+de datos de la tabla.
+
+
+   Suministra pues procedimientos para {\tt Iniciar\_tabla()},
+{\tt Terminar\_tabla()} e {\tt Indicar\_en\_tabla()}. Por supuesto,
+suministra adem s {\tt Consultar\_vals()} que informa sobre valores
+almacenados en la misma.
+
+   Quiz  el punto m s importante en el dise¤o es que en principio no almacena
+todos los valores que muestra, sino s¢lo los manuales. As¡ mismo, dependiendo
+de las opciones que reciba, es la que se encarga de actualizar el volcado de
+dicha tabla a fichero y/o impresora.
+
+   El n£mero de filas y columnos de la tabla se define din micamente, en
+funci¢n de los valores que interesa mostrar y de la amplitud de la pantalla.
+Tras inicializarse, informa del ancho de pantalla utilizado.
+
+\subsection{val}
+
+   Aqu¡ residen los c lculos para una valoraci¢n, aunque en realidad es s¢lo
+un {\em concentrador} de c lculos. La informaci¢n residente en el fichero
+de datos se aloja aqu¡ en memoria. Es {\tt Leer\_mundo\_de\_val()} el
+procedimiento que lo lee.
+
+   Da informaci¢n sobre porcentajes de valoraci¢n completada, sobre el
+pH que obtenemos y  sobre el volumen que necesitamos en la bureta.
+Tambi‚n es capaz de decirnos si puede o no efectuarse una valoraci¢n dada.
+
+   La funci¢n que calcula el pH, decide en funci¢n de los datos de la
+valoraci¢n que f¢rmula utilizar, devolviendo el valor correspondiente. A esto
+nos refer¡amos con ``concentrador''.
+
+   Por supuesto, tambi‚n tiene una serie de funciones que nos permiten
+escudri¤ar en el interior de una valoraci¢n para ver las caracter¡sticas
+de los elementos que interivienen en ella (fuerza del  cido, nombre de la
+base, \ldots).
+
+
+\subsection{react}
+
+   Este m¢dulo es bastante simple, y tan s¢lo suministra los tipos b sicos
+para manejar  cidos, bases e indicadores. Tamb¡en incluye procedimientos
+para leerlos de un fichero.
+
+\subsection{grio}
+
+   Aqu¡ tenemos el interfaz con el sistema de gr ficos (si lo unimos a la
+unidad de la {\sl ToolBox}\/ {\tt graph.tpu}.
+
+   El procedimiento {\tt Inicializar\_graficos()} no pasa la pantalla a
+modo gr fico, sino que inicializa el sistema de gr ficos para que en adelante
+se puedan utilizar. En realidad es el que se encarga de cargar en la zona
+adecuada de la memoria el driver para la tarjeta.
+
+   Tambi‚n se incluyen funciones un tanto elementales para manejo de colores
+y sus nombres.
+
+   Se han incluido funciones tales como {\tt Imprimir\_str\_xyl()} para
+imprimir borrando el fondo en modo gr fico.
+
+
+   Con esto completamos el recorrido por el c¢digo de \eq, para los m s
+curiosos inclu¡mos un listado {\em completo} del fuente. No hemos incluido
+ning£n listado de unidad alguna perteneciente a la {\sl ToolBox}.
+
+
+\newpage
+\section{ Listado del c¢digo fuente}
+
+   A continuaci¢n suministramos un listado de todos los m¢dulos que
+componen el programa. Para compilarlo es necesario disponer de un
+{\sl TurboPascal\/}6.0 o similar y de la {\sl ToolBox}.
+
+\end{document}
