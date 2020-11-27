@@ -2,8 +2,8 @@
 
 
 
-             eq (c) 1991,1992 Esther Li¤ n Veganzones
-             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             eq (c) 1991,1992
+             ~~~~~~~~~~~~~~~~
 
 
 
@@ -18,25 +18,25 @@ para explicar el concepto de valoracion a estudiantes de cursos de
 introduccion a la quimica general. Permite una vision dinamica del proceso
 de valoracion.
 
-    (*) Cambios respecto a la versi¢n 1.0:
+    (*) Cambios respecto a la versiÂ¢n 1.0:
         ---------------------------------
 
-*   => Escribe "pH" correctamente. Antes se pod¡a ver algo como "PH".
+*   => Escribe "pH" correctamente. Antes se podÂ¡a ver algo como "PH".
        Asimismo escribe las palabras correctamente acentuadas.
 *   => Posibilidad de obtener la tabla de pHs por impresora i/o fichero.
 *   => Dibuja el punto de equivalencia TRAS haber dibujado la grafica,
 *         indicando el valor del pH en dicho punto.
-*   => Limita la escala volum‚trica a 100mL con lo que la precisi¢n es mayor.
-*   => Si no hay colisi¢n de d¡gitos [uno sobre otro] dibuja los valores
-*         correspondientes a las divisiones de la escala en la gr fica.
-*   => Dibuja la primera derivada de la curva de valoraci¢n y/o dicha curva.
-*   => Anota el m ximo de la primera derivada y lo compara con el pH del
+*   => Limita la escala volumâ€štrica a 100mL con lo que la precisiÂ¢n es mayor.
+*   => Si no hay colisiÂ¢n de dÂ¡gitos [uno sobre otro] dibuja los valores
+*         correspondientes a las divisiones de la escala en la grÂ fica.
+*   => Dibuja la primera derivada de la curva de valoraciÂ¢n y/o dicha curva.
+*   => Anota el mÂ ximo de la primera derivada y lo compara con el pH del
 *         punto de equivalencia.
-*   => Suministra informaci¢n reconfigurable mediante fichero de datos
+*   => Suministra informaciÂ¢n reconfigurable mediante fichero de datos
 *         sobre (in)conveniencia de indicadores para los juegos de ac./bas.
-!-! => Incluye valoraciones para  cidos poliproticos.
+!-! => Incluye valoraciones para Â cidos poliproticos.
     => Incluye el uso del metodo de las tres tangentes tralara!
-    => Permite la navegacion mediante cursor/rat¢n sobre ambas curvas.
+    => Permite la navegacion mediante cursor/ratÂ¢n sobre ambas curvas.
 
 
 
@@ -61,7 +61,7 @@ de valoracion.
     (*) NECESIDADES:
         -----------
 
-    eq s¢lo funciona en PCs con tarjetas graficas CGA EGA o VGA.
+    eq sÂ¢lo funciona en PCs con tarjetas graficas CGA EGA o VGA.
     Necesita un minimo de 512 Kb para funcionar ( incluye dentro del
     propio programa los drivers y fuentes para texto en modo grafico).
 
@@ -85,7 +85,7 @@ ficheros:
          phfun.pas    -> El fuente del modulo "phfun" utilizado por eq.
          fun_mat.pas  -> El fuente del modulo "fun_mat" utilizado por phfun.
 
-         ***=M¢dulos=compilados=***
+         ***=MÂ¢dulos=compilados=***
 
 
          phfun.tpu    -> La "Turbo Pascal Unit" de phfun.
@@ -124,7 +124,7 @@ ficheros:
                          *       a ClH
                          *       fuerte
                          *       1
-                         *       Acido Clorh¡drico
+                         *       Acido ClorhÂ¡drico
                          *
                          *     Nota: '#', 'a' y 'b' han de estar al principio de la linea.
 
